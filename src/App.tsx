@@ -69,7 +69,7 @@ function AnimatedLogo() {
   const { display, showDot, showCursor } = useLogoTypewriter();
 
   return (
-    <a href="#home" className="flex items-center gap-0">
+    <a href="#home" className="flex items-center gap-0 min-h-[1.75rem]">
       <span className="text-xl font-bold font-mono tracking-tighter whitespace-nowrap">
         {display}
       </span>
@@ -85,15 +85,21 @@ function AnimatedLogo() {
 function App() {
   return (
     <div className="min-h-screen bg-fintech-primary selection:bg-fintech-accent selection:text-fintech-primary">
-      <nav className="fixed w-full z-50 bg-fintech-primary/80 backdrop-blur-md border-b border-fintech-secondary">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="w-56 shrink-0 font-mono tracking-tighter">
+      <nav className="fixed w-full z-50 bg-fintech-primary/80 backdrop-blur-md border-b border-fintech-secondary h-[64px]">
+        <div className="container mx-auto px-6 h-full grid grid-cols-3 items-center">
+          {/* Col 1 — Logo (left) */}
+          <div className="font-mono tracking-tighter">
             <AnimatedLogo />
           </div>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400 mx-auto">
+
+          {/* Col 2 — Nav links (always truly centered) */}
+          <div className="hidden md:flex justify-center gap-8 text-sm font-medium text-gray-400">
             <a href="#services" className="hover:text-fintech-accent transition-colors">Arsenal Técnico</a>
             <a href="#about" className="hover:text-fintech-accent transition-colors">Sobre Mí</a>
           </div>
+
+          {/* Col 3 — Spacer (mirrors col 1 so col 2 stays centered) */}
+          <div />
         </div>
       </nav>
 
