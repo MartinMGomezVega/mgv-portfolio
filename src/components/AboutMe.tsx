@@ -1,13 +1,20 @@
 
 import { Box, Layers, FileText } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AboutMe = () => {
     return (
         <section id="about" className="py-24 bg-fintech-secondary/10 border-t border-fintech-secondary relative">
             <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-                {/* Text Content */}
-                <div className="space-y-6">
+                {/* Text Content — slides in from the left */}
+                <motion.div
+                    className="space-y-6"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fintech-primary border border-fintech-highlight/20 text-fintech-highlight text-sm font-mono">
                         <span className="w-2 h-2 rounded-full bg-fintech-highlight"></span>
                         <span>Ingeniero Informático</span>
@@ -40,10 +47,16 @@ const AboutMe = () => {
                             <p className="text-sm text-gray-500">Sistemas optimizados para máxima velocidad.</p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* CV Download Card */}
-                <div className="relative h-[400px] bg-fintech-primary rounded-2xl border border-fintech-secondary p-8 flex items-center justify-center overflow-hidden">
+                {/* CV Download Card — slides in from the right */}
+                <motion.div
+                    className="relative h-[400px] bg-fintech-primary rounded-2xl border border-fintech-secondary p-8 flex items-center justify-center overflow-hidden"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
+                >
                     <div className="absolute inset-0 opacity-20"
                         style={{
                             backgroundImage: 'linear-gradient(#112240 1px, transparent 1px)',
@@ -67,7 +80,7 @@ const AboutMe = () => {
                             Descargar PDF
                         </a>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>

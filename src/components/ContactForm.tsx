@@ -148,14 +148,20 @@ const ContactForm = () => {
             <section id="contact" className="py-24 bg-fintech-primary relative">
                 <div className="container mx-auto px-6 max-w-4xl">
 
-                    <div className="text-center mb-16 space-y-4">
+                    <motion.div
+                        className="text-center mb-16 space-y-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    >
                         <h2 className="text-4xl font-bold">
                             <span className="text-fintech-accent">Contacto</span>
                         </h2>
                         <p className="text-gray-400 text-lg max-w-xl mx-auto">
                             Ya sea para un proyecto, una entrevista o una consulta técnica, estoy a un mensaje de distancia.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* Network error banner */}
                     {submitStatus === 'error' && networkError && (

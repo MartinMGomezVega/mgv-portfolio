@@ -1,5 +1,26 @@
 
 import { Bot, Code2, ShieldAlert } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+// ── Animation variants ────────────────────────────────────────────────────────
+const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+const cardVariant = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0 },
+};
 
 const TechnicalArsenal = () => {
     const services = [
@@ -32,19 +53,37 @@ const TechnicalArsenal = () => {
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-fintech-secondary/10 to-transparent pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="mb-16 max-w-2xl">
+
+                {/* Section header */}
+                <motion.div
+                    className="mb-16 max-w-2xl"
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">
                         <span className="text-gradient">Arsenal Técnico</span>
                     </h2>
                     <p className="text-gray-400 text-lg">
                         Herramientas seleccionadas por su robustez. Sin tecnologías de moda pasajera, solo lo que funciona y escala.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Cards with stagger */}
+                <motion.div
+                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                >
                     {services.map((service, index) => (
-                        <div
+                        <motion.div
                             key={index}
+                            variants={cardVariant}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             className="group relative bg-fintech-secondary/20 border border-[#222] p-8 rounded-xl hover:border-fintech-accent/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(100,255,218,0.1)]"
                         >
                             {/* "Armor Plate" Shine Effect */}
@@ -75,9 +114,9 @@ const TechnicalArsenal = () => {
                                     {service.highlight}
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
