@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-fintech-primary: #0A192F;
+  --color-fintech-secondary: #112240;
+  --color-fintech-text: #E6F1FF;
+  --color-fintech-accent: #64FFDA;
+  --color-fintech-highlight: #64FFDA;
+}
+
+@layer base {
+  body {
+    @apply bg-fintech-primary text-fintech-text font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+/* Custom Scrollbar for "Steel" look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A192F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #112240;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64FFDA;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #E6F1FF, #64FFDA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
